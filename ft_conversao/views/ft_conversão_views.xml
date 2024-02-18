@@ -1,0 +1,225 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record id="_view_form" model="ir.ui.view">
+        <field name="name">ft_conversao_view_form</field>
+        <field name="model">ft_conversao</field>
+        <field name="arch" type="xml">
+            <form string="Calculadora">
+                <sheet>
+                     <h1><center>Calculadora / Conversor</center></h1>
+                    <notebook>
+                        <page name="Conversão DB" string="DB">
+                            <group>
+                                <h3>Conversor de Watts para dBW</h3>
+                                <p><button class="oe_highlight" name="calcular_potencia_dBw" type="object" string="Converter"/>P[dBW] = 10log ( P/1W ) </p>
+                                <field name="potencia_dBw" />
+                                <field name="potencia_W"/>
+                            </group>
+                            <group>
+                                <h3>Conversor de Volts para dBV</h3>
+                                <p><button class="oe_highlight" name="calcular_potencia_dBv" type="object" string="Converter"/>P[dBV] = 20log ( E/1V )</p>
+                                <field name="potencia_dBv" />
+                                <field name="tensao_v"/>
+                            </group>
+                            <group>
+                                <h3>Conversor de dBm</h3>
+                                <p><button class="oe_highlight" name="calcular_potencia_dBm" type="object" string="Converter"/>P[dBm] = 10log ( P/1mW )</p>
+                                <field name="potencia_dBm" />
+                                <field name="potencia_mW"/>
+                            </group>
+                            <group>
+                                <h3>Conversor de dBu</h3>
+                                <p><button class="oe_highlight" name="calcular_potencia_dBu" type="object" string="Converter"/>P[dBu] = 20log ( P/1u )</p>
+                                <field name="potencia_dBu" />
+                                <field name="potencia_uW"/>
+                            </group>
+                            <group>
+                                <h3>Conversor Decibel</h3>
+                                <p><button class="oe_highlight" name="calcular_relacao_potencia_dB" type="object" string="Converter"/>P[dB] = 20log ( Po / Pi )</p>
+                                <field name="potencia_dB" />
+                                <field name="potencia_entrada"/>
+                                <field name="potencia_saida"/>
+                            </group>
+                            <group>
+                                <h3>dbW para dBm</h3>
+                                <p><button class="oe_highlight" name="dBw_para_dBm" type="object" string="Converter"/>dBm = dBw + 30</p>
+                                <field name="potencia_dBm" />
+                                <field name="potencia_dBw"/>
+                            </group>
+                            <group>
+                                <h3>dBw para dBu</h3>
+                                <p><button class="oe_highlight" name="dBw_para_dBu" type="object" string="Converter"/>dBu = dBw + 60</p>
+                                <field name="potencia_dBu" />
+                                <field name="potencia_dBw"/>
+                            </group>
+                            <group>
+                                <h3>dBu para dBw</h3>
+                                <p><button class="oe_highlight" name="dBu_para_dBw" type="object" string="Converter"/>dBw = dBu - 60</p>
+                                <field name="potencia_dBw" />
+                                <field name="potencia_dBu"/>
+                            </group>
+                            <group>
+                                <h3>dBm para dBw</h3>
+                                <p><button class="oe_highlight" name="dBm_para_dBw" type="object" string="Converter"/>dBW = dBm - 30</p>
+                                <field name="potencia_dBw" />
+                                <field name="potencia_dBm"/>
+                            </group>
+                        </page>
+                        <page name="W" string="Watts">
+                            <group>
+                                <h3>Conversor Watts</h3>
+                                <p><button class="oe_highlight" name="converter_potencia_uW" type="object" string="Microwatts"/>
+                                <button class="oe_highlight" name="converter_potencia_mW" type="object" string="Miliwatts"/>
+                                <button class="oe_highlight" name="converter_potencia_W" type="object" string="Watts"/>
+                                <button class="oe_highlight" name="converter_potencia_kW" type="object" string="Kilowatts"/>
+                                <button class="oe_highlight" name="converter_potencia_MW" type="object" string="Megawatts"/>
+                                <button class="oe_highlight" name="converter_potencia_GW" type="object" string="Gigawatts"/>
+                                <button class="oe_highlight" name="converter_potencia_TW" type="object" string="Terawatts"/></p>
+
+                                    <field name="potencia_uW" digits="[18,18]"/>
+                                    <field name="potencia_mW" digits="[18,18]"/>
+                                    <field name="potencia_W" digits="[18,18]"/>
+                                    <field name="potencia_kW" digits="[18,18]"/>
+                                    <field name="potencia_MW" digits="[18,18]"/>
+                                    <field name="potencia_GW" digits="[18,18]"/>
+                                    <field name="potencia_TW" digits="[18,18]"/>
+
+                            </group>
+                        </page>
+                        <page name="FM" string="FM">
+                            <group>
+                                <h3>Expressão Frequencia do Sinal Modulado</h3>
+                                <p><button class="oe_highlight" name="calcular_expressao_frequencia_fm" type="object" string="Calcular"/>f(t)  = fo t + kf Am cos(Wm t)</p>
+                                <field name="expressao_frequencia_fm" />
+                                <field name="frequencia_fo"/>
+                                <field name="tempo"/>
+                                <field name="constante_kf"/>
+                                <field name="amplitude_Am"/>
+                                <field name="frequencia_Wm"/>
+                            </group>
+                            <group>
+                                <h3>Desvio de frequencia</h3>
+                                <p><button class="oe_highlight" name="calcular_desvio_frequencia" type="object" string="Calcular"/>Δf = Kf Am</p>
+                                <field name="desvio_frequencia" />
+                                <field name="constante_kf"/>
+                                <field name="amplitude_Am"/>
+                            </group>
+                            <group>
+                                <h3>Indice de Modulação</h3>
+                                <p><button class="oe_highlight" name="calcular_indice_modulacao_fm" type="object" string="Calcular"/>β = Δf / fm</p>
+                                <field name="indice_modulacao" />
+                                <field name="desvio_frequencia"/>
+                                <field name="frequencia_fm"/>
+                            </group>
+                            <group>
+                                <h3>Largura de Banda</h3>
+                                <p><button class="oe_highlight" name="calcular_largura_banda" type="object" string="Calcular"/>B = 2(β + 1)fm</p>
+                                <field name="largura_banda" />
+                                <field name="indice_modulacao"/>
+                                <field name="frequencia_fm"/>
+                            </group>
+                            <group>
+                                <h3>Largura de Banda</h3>
+                                <p><button class="oe_highlight" name="calcular_largura_banda_2" type="object" string="Calcular"/>B = 2Δf + 2fm</p>
+                                <field name="largura_banda" />
+                                <field name="desvio_frequencia"/>
+                                <field name="frequencia_fm"/>
+                            </group>
+                            <group>
+                                <h3>Sinal Modulado em FM</h3>
+                                <p><button class="oe_highlight" name="calcular_sinal_fm" type="object" string="Calcular"/>Sfm(t) = Ao cos[2π fo t + β sen (2π fm t)]</p>
+                                <field name="sinal_fm" />
+                                <field name="amplitude_Ao"/>
+                                <field name="frequencia_fo"/>
+                                <field name="tempo"/>
+                                <field name="indice_modulacao"/>
+                                <field name="frequencia_fm"/>
+                            </group>
+                            <group>
+                                <h3>Frequencia angular da menssagem</h3>
+                                <p><button class="oe_highlight" name="converter" type="object" string="Calcular"/>Wm = 2π fm</p>
+                                <field name="frequencia_Wm" />
+                                <field name="frequencia_fm"/>
+                            </group>
+                            <group>
+                                <h3>Pares de Banda Lateral</h3>
+                                <p><button class="oe_highlight" name="calcular_n_pares_bandas_laterais" type="object" string="Calcular"/>n = β + 1</p>
+                                <field name="n_pares_bandas_laterais" />
+                                <field name="indice_modulacao"/>
+                            </group>
+                            <group>
+                                <h3>Espectro do Sinal</h3>
+                                <p><button class="oe_highlight" name="calcular_espectro" type="object" string="Calcular"/><button class="oe_highlight" name="calcular_espectro_resumido" type="object" string="Calcular Resumido"/>An = jn(B) * Ap cos(Wo t)</p>
+                                <field name="An" />
+                                <field name="jn_b"/>
+                                <field name="amplitude_Ao"/>
+                                <field name="frequencia_Wo"/>
+                                <field name="tempo"/>
+                            </group>
+                        </page>
+
+                        <page name="AM" string="AM">
+                            <group>
+                                <h3>Indice de Modulação</h3>
+                                <p><button class="oe_highlight" name="calcular_indice_modulacao_am" type="object" string="Calcular"/>u = Am / Ap</p>
+                                <field name="indice_modulacao_am" />
+                                <field name="amplitude_Am"/>
+                                <field name="amplitude_Ao"/>
+                            </group>
+                            <group>
+                                <h3>Comprimento de Antena / Comprimento de Onda</h3>
+                                <p><button class="oe_highlight" name="calcular_comprimento_onda" type="object" string="Calcular"/>λ = c / fc</p>
+                                <field name="comprimento_onda" />
+                                <field name="velocidade_luz_c"/>
+                                <field name="frequencia_fc"/>
+                            </group>
+                            <group>
+                                <h3>Potencia Portadora</h3>
+                                <p><button class="oe_highlight" name="calcular_potencia_portadora" type="object" string="Calcular"/>Pp = Ap² / 2</p>
+                                <field name="potencia_Pp" />
+                                <field name="amplitude_Ao"/>
+                            </group>
+                            <group>
+                                <h3>Potencia Banda Laterais</h3>
+                                <p><button class="oe_highlight" name="calcular_potencia_portadora" type="object" string="Calcular"/>Pbl = (Ap u)²/ 4</p>
+                                <field name="potencia_Pbl" />
+                                <field name="amplitude_Ao"/>
+                                <field name="indice_modulacao_am"/>
+                            </group>
+                            <group>
+                                <h3>Potencia Total</h3>
+                                <p><button class="oe_highlight" name="calcular_potencia_total" type="object" string="Calcular"/>Ptotal = Pp + Pbl ou  Ptotal = [ A²p / 2 ] + [ A²p u² / 4 ]</p>
+                                <field name="potencia_Ptotal" />
+                                <field name="potencia_Pp"/>
+                                <field name="potencia_Pbl"/>
+                            </group>
+                            <group>
+                                <h3>Largura de Faixa do Sinal Modulado</h3>
+                                <p><button class="oe_highlight" name="calcular_largura_faixa_sinal_modulado" type="object" string="Calcular"/>Bam = 2fm</p>
+                                <field name="largura_faixa_sinal_modulado_Bam" />
+                                <field name="frequencia_fm"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record model="ir.actions.act_window" id="ft_conversao.action_window">
+      <field name="name">ft_conversao_window</field>
+      <field name="res_model">ft_conversao</field>
+      <field name="view_mode">form</field>
+    </record>
+
+
+    <menuitem name="Calculadora" id="ft_conversao.menu_root" action="ft_conversao.action_window"
+    web_icon="ft_conversao,static/description/icon.png"/>
+
+
+  </data>
+</odoo>
